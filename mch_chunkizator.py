@@ -56,6 +56,9 @@ if __name__ == "__main__":
     parser.add_argument("text_file", type=str, help="The text to be split into chunks.")
     args = parser.parse_args()
 
+    with open(args.text_file, "r", encoding="utf-8") as f:
+        text = f.read()
+
     """Creates an instance of ChunkSplitter called splitter.
     Calls create_chunks on the text, specifying a chunk_size of 50 characters and chunk_overlap of 5."""
 
