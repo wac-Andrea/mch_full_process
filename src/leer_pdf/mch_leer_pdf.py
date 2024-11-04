@@ -54,29 +54,6 @@ def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwa
 
     return text
 
-""" def main():
-    # Set up argument parser
-    parser = argparse.ArgumentParser(description="Extract text from PDFs.")
-    parser.add_argument("pdf_path", type=str, help="Path to the input PDF file.")
-    parser.add_argument("txt_output_path", type=str, help="Path to the output text file.")
-    parser.add_argument("--layout", type=bool, default=True, help="Layout option for extraction.")
-    parser.add_argument("--line_dir_render", type=str, default="ttb", help="Line direction render option.")
-    parser.add_argument("--char_dir_render", type=str, default="ltr", help="Character direction render option.")
-    parser.add_argument("--x_tolerance", type=float, default=3.0, help="X tolerance for extraction.")
-    parser.add_argument("--y_tolerance", type=float, default=3.0, help="Y tolerance for extraction.")
-    
-    args = parser.parse_args()
-
-    # Store options in a dictionary
-    extract_text_from_pdf(
-        args.pdf_path,
-        args.txt_output_path,
-        layout=args.layout,
-        line_dir_render=args.line_dir_render,
-        char_dir_render=args.char_dir_render,
-        x_tolerance=args.x_tolerance,
-        y_tolerance=args.y_tolerance
-    ) """
 
 if __name__ == "__main__":
     pass
