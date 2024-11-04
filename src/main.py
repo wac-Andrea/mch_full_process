@@ -1,5 +1,6 @@
 import argparse
 from leer_pdf.mch_leer_pdf import extract_text_from_pdf
+from chunkizator.mch_chunkizator import ChunkSplitter
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF file.")
@@ -7,7 +8,11 @@ def main():
     args = parser.parse_args()
 
     extracted_txt=extract_text_from_pdf(args.pdf_path)
-    print(extracted_txt)
+   
+    splitter = ChunkSplitter()
+    chunks = splitter.create_chunks(extracted_txt, chunk_size=50, chunk_overlap=5, model="gpt-4")
+    for i, chunk in enumerate(chunks):
+        print(f"Fragmento {i+1}: {chunk}")
 
 #archivo_salida = args.txt_salida
 #text_from_pdf = leer_pdf()

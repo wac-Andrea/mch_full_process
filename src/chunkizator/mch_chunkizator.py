@@ -49,23 +49,9 @@ class ChunkSplitter:
     
     """Encodes text into tokens and returns the number of tokens (length of the encoded list)."""
 
-
 # Ejemplo de uso:
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Chunk text into smaller parts.")
-    parser.add_argument("text_file", type=str, help="The text to be split into chunks.")
-    args = parser.parse_args()
-
-    with open(args.text_file, "r", encoding="utf-8") as f:
-        text = f.read()
-
-    """Creates an instance of ChunkSplitter called splitter.
-    Calls create_chunks on the text, specifying a chunk_size of 50 characters and chunk_overlap of 5."""
-
-    splitter = ChunkSplitter()
-    chunks = splitter.create_chunks(text, chunk_size=50, chunk_overlap=5, model="gpt-4")
-    for i, chunk in enumerate(chunks):
-        print(f"Fragmento {i+1}: {chunk}")
+    pass
 
 """Para usar este código: 
     1.  Bash: pip install tiktoken langchain
