@@ -1,7 +1,10 @@
 import pdfplumber
+import os
 import argparse
 
-def extract_text_from_pdf(pdf_path, txt_output_path="txts/salida.txt", **kwargs):
+def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwargs):
+    pdf_filename = os.path.basename(pdf_path)
+    output_path = os.path.join("txts", pdf_filename.replace(".pdf", ".txt"))
     """
     Function to extract text from a PDF and save it to a .txt file.
 
@@ -41,14 +44,17 @@ def extract_text_from_pdf(pdf_path, txt_output_path="txts/salida.txt", **kwargs)
                 y_tolerance=options["y_tolerance"],
             )
             text += "\n"
+    
+    output_dir = os.path.dirname(txt_output_path) or "."
+    os.makedirs(output_dir, exist_ok=True)
 
     # Save the extracted text to a .txt file
-    with open(txt_output_path, "w", encoding="utf-8") as archivo:
+    with open(output_path, "w", encoding="utf-8") as archivo:
         archivo.write(text)
 
     return text
 
-def main():
+""" def main():
     # Set up argument parser
     parser = argparse.ArgumentParser(description="Extract text from PDFs.")
     parser.add_argument("pdf_path", type=str, help="Path to the input PDF file.")
@@ -70,7 +76,7 @@ def main():
         char_dir_render=args.char_dir_render,
         x_tolerance=args.x_tolerance,
         y_tolerance=args.y_tolerance
-    )
+    ) """
 
 if __name__ == "__main__":
-    main()
+    pass
