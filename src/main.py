@@ -22,6 +22,7 @@ def main():
 
     for corrected in corrected_texts:
         print(f"Texto Corregido: {corrected}\n")
+        print(type(corrected_texts))
 
     """  text_list = [chunks]
     corrected_texts = texts_to_api (text_list)
