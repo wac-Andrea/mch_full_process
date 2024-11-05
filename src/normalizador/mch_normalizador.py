@@ -9,13 +9,11 @@ client = OpenAI(
 )
 
 META_PROMPT = """
-Tengo una frase mal escrita con símbolos extraños, palabras mal ordenadas, palabras mal separadas o con faltas de ortografía. 
-Necesito que me devuelvas la frase correctamente escrita, con buena puntuación y con las palabras corregidas. 
-Sólo corrige la frase, no añadas información o palabras que no vengan en el prompt del usuario. 
-Además, traduce al español los caracteres especiales o códigos. 
-Haz tu mejor esfuerzo para interpretar el significado y traducirlo de manera precisa.
-Por añadir contexto, todas las frases que vas a analizar una a una están extraídas de manuales de carretillas 
-eléctricas y otras herramientas de trabajo
+Tengo un texto compuesto por diferentes frases que están mal escritas con símbolos extraños, palabras mal ordenadas, palabras mal separadas o con faltas de ortografía. 
+Necesito que me devuelvas estas frases correctamente escritas, con buena puntuación y con las palabras corregidas. 
+Sólo corrige el texto, no añadas información o palabras que no vengan en el prompt del usuario. 
+Hazlo sólo con oraciones completas, no con palabras sueltas que encuentres en el texto. Si encuentras estas palabras sueltas o palabras a las que no puedas aplicar los cambios
+que te solicito, sáltalas dejando el fragmento vacío.
 """.strip()
 
 def generate_prompt(task_or_prompt: str) -> str:

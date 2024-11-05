@@ -11,7 +11,7 @@ def main():
     extracted_txt=extract_text_from_pdf(args.pdf_path)
    
     splitter = ChunkSplitter()
-    chunks = splitter.create_chunks(extracted_txt, chunk_size=50, chunk_overlap=5, model="gpt-4")
+    chunks = splitter.create_chunks(extracted_txt, chunk_size=750, chunk_overlap=100, model="gpt-4")
     for i, chunk in enumerate(chunks):
         print(f"Fragmento {i+1}: {chunk}")
 
