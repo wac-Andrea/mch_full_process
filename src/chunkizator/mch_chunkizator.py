@@ -5,8 +5,6 @@ import tiktoken
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 """It can split long pieces of text into smaller chunks."""
 
-import argparse
-
 class ChunkSplitter:
     def __init__(self):
         pass
