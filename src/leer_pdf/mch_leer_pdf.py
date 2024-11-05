@@ -1,6 +1,5 @@
 import pdfplumber
 import os
-import argparse
 
 def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwargs):
     pdf_filename = os.path.basename(pdf_path)
