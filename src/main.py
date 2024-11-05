@@ -1,8 +1,13 @@
 import argparse
+import os
+from dotenv import load_dotenv
 from leer_pdf.mch_leer_pdf import extract_text_from_pdf
 from chunkizator.mch_chunkizator import ChunkSplitter
 from normalizador.mch_normalizador import generate_prompt, texts_to_api
 from crear_embedding.crear_embedding import CrearEmbeddings
+from almacenar_embedding.almacenar_embedding import AlmacenarEmbedding
+
+load_dotenv()
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF file.")
@@ -26,19 +31,12 @@ def main():
         print(type(corrected_texts))
 
     embeddings = CrearEmbeddings(corrected_texts, model="text-embedding-3-small")
+
+    pinecone_api_key = os.getenv("PINECONE_API_KEY")
+    storage_responses = AlmacenarEmbedding(embeddings, api_key=pinecone_api_key, index="mch-dev")
     
-    for i, embedding in enumerate(embeddings):
-        print(f"Embedding {i+1}: {embedding}\n")
-
-#archivo_salida = args.txt_salida
-#text_from_pdf = leer_pdf()
-
-#chunks = chunckizator(archivo_salida)
-# splitter = ChunkSplitter()
-# chunks = splitter.create_chunks(salida.txt, chunk_size=50, chunk_overlap=5, model="gpt-4")
-
-#corrected_texts = texts_to_api(chunks)
-#generate_embeddings(corrected_texts)
+    for i, response in enumerate(storage_responses):
+        print(f"Storage Response {i+1}: {response}")
 
 if __name__ == "__main__":
     main()
