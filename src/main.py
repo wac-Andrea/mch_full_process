@@ -2,6 +2,7 @@ import argparse
 from leer_pdf.mch_leer_pdf import extract_text_from_pdf
 from chunkizator.mch_chunkizator import ChunkSplitter
 from normalizador.mch_normalizador import generate_prompt, texts_to_api
+from crear_embedding.crear_embedding import CrearEmbeddings
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF file.")
@@ -24,11 +25,10 @@ def main():
         print(f"Texto Corregido: {corrected}\n")
         print(type(corrected_texts))
 
-    """  text_list = [chunks]
-    corrected_texts = texts_to_api (text_list)
-    for corrected in corrected_texts:
-        print(f"Textos corregidos: {corrected}\n")
-    """
+    embeddings = CrearEmbeddings(corrected_texts, model="text-embedding-3-small")
+    
+    for i, embedding in enumerate(embeddings):
+        print(f"Embedding {i+1}: {embedding}\n")
 
 #archivo_salida = args.txt_salida
 #text_from_pdf = leer_pdf()
@@ -36,7 +36,6 @@ def main():
 #chunks = chunckizator(archivo_salida)
 # splitter = ChunkSplitter()
 # chunks = splitter.create_chunks(salida.txt, chunk_size=50, chunk_overlap=5, model="gpt-4")
-
 
 #corrected_texts = texts_to_api(chunks)
 #generate_embeddings(corrected_texts)

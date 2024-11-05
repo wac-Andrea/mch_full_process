@@ -6,7 +6,6 @@ load_dotenv() # Carga todas las variables del .env como variables de entorno
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY")) # Busca entre las variables de entorno una que se llame "OPENAI_API_KEY"
 
-
 def CrearEmbeddings(listas_datos, model="text-embedding-3-small", unique_id=None):
     lista_vectores = []
     #Initializes an empty list called lista_vectores, which will store the embedding data for each item in listas_datos.
