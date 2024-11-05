@@ -13,7 +13,7 @@ Tengo un texto compuesto por diferentes frases que están mal escritas con símb
 Necesito que me devuelvas estas frases correctamente escritas, con buena puntuación y con las palabras corregidas. 
 Sólo corrige el texto, no añadas información o palabras que no vengan en el prompt del usuario. 
 Hazlo sólo con oraciones completas, no con palabras sueltas que encuentres en el texto. Si encuentras estas palabras sueltas o palabras a las que no puedas aplicar los cambios
-que te solicito, sáltalas dejando el fragmento vacío.
+que te solicito, elimínalas de tu lista final.
 """.strip()
 
 def generate_prompt(task_or_prompt: str) -> str:
