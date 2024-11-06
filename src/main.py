@@ -3,9 +3,10 @@ import os
 from dotenv import load_dotenv
 from leer_pdf.mch_leer_pdf import extract_text_from_pdf
 from chunkizator.mch_chunkizator import ChunkSplitter
-from normalizador.mch_normalizador import generate_prompt, texts_to_api
+from normalizador.mch_normalizador import generate_prompt
 from crear_embedding.crear_embedding import CrearEmbeddings
 from almacenar_embedding.almacenar_embedding import AlmacenarEmbedding
+from comprobar_encoding.comprobar_enconding import is_latin
 
 load_dotenv()
 
@@ -15,7 +16,14 @@ def main():
     args = parser.parse_args()
 
     extracted_txt=extract_text_from_pdf(args.pdf_path)
+
+    if is_latin(extracted_txt):
+        print("The extracted text is likely in English or Spanish.")
+    else:
+        print("The extracted text contains unsupported characters (likely Chinese or symbols).")
+        
    
+      
     splitter = ChunkSplitter()
     chunks = splitter.create_chunks(extracted_txt, chunk_size=750, chunk_overlap=100, model="gpt-4")
     for i, chunk in enumerate(chunks):
@@ -36,7 +44,7 @@ def main():
     storage_responses = AlmacenarEmbedding(embeddings, api_key=pinecone_api_key, index="mch-dev")
     
     for i, response in enumerate(storage_responses):
-        print(f"Storage Response {i+1}: {response}")
-
+        print(f"Vector almacenado: {i+1}: {response}")
+ 
 if __name__ == "__main__":
     main()
