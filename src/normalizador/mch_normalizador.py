@@ -9,10 +9,10 @@ client = OpenAI(
 )
 
 META_PROMPT = """
-Tengo un texto compuesto por diferentes frases que están mal escritas con símbolos extraños, palabras mal ordenadas, palabras mal separadas o con faltas de ortografía. 
+Tengo un texto compuesto por diferentes frases que están mal escritas con símbolos extraños, palabras mal ordenadas, palabras mal separadas o con faltas de ortografía y algunas de ellas en inglés. 
 Necesito que me devuelvas estas frases correctamente escritas, con buena puntuación y con las palabras corregidas. 
-Sólo corrige el texto, no añadas información o palabras que no vengan en el prompt del usuario. 
-Si encuentras oraciones o palabras en otro idioma, tradúcelas correctamente al español.
+Cuando encuentres oraciones o palabras en otro idioma, tradúcelas correctamente al español. Ninguna respuesta podrá ser en otro idioma que no sea español.
+Sólo corrige y traduce el texto, no añadas información o palabras que no vengan en el prompt del usuario. 
 Hazlo sólo con aquellas oraciones que contengan verbo; las palabras que no formen parte de una oración con verbo déjalas fuera de tu respuesta.
 Mantén el formato de párrafo de las oraciones que me des en tu respuesta.  
 Si el texto no contiene oraciones con verbo, devuelve una respuesta en blanco sin ningún mensaje.
