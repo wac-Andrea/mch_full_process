@@ -13,10 +13,8 @@ Tengo un texto compuesto por diferentes frases que están mal escritas con símb
 Necesito que me devuelvas estas frases correctamente escritas, con buena puntuación y con las palabras corregidas. 
 Cuando encuentres oraciones o palabras en otro idioma, tradúcelas correctamente al español. Ninguna respuesta podrá ser en otro idioma que no sea español.
 Sólo corrige y traduce el texto, no añadas información o palabras que no vengan en el prompt del usuario. 
-Hazlo sólo con aquellas oraciones que contengan verbo; las palabras que no formen parte de una oración con verbo déjalas fuera de tu respuesta.
-Mantén el formato de párrafo de las oraciones que me des en tu respuesta.  
-Si el texto no contiene oraciones con verbo, devuelve una respuesta en blanco sin ningún mensaje.
-""".strip()
+Hazlo sólo con aquellas oraciones que contengan verbo; las palabras que no formen parte de una oración con verbo déjalas fuera de tu respuesta. 
+Si el texto no contiene oraciones con verbo, devuelve una respuesta en blanco sin ningún mensaje.""".strip()
 
 def generate_prompt(task_or_prompt: str) -> str:
     completion = client.chat.completions.create(

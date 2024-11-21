@@ -5,7 +5,7 @@ import os
 
 load_dotenv()  
 
-def AlmacenarEmbedding(lista_vectores, api_key, index="mch-dev", namespace="ns1"):
+def AlmacenarEmbedding(lista_vectores, api_key, index="mch-carretillas-chatbot", namespace="ns1"):
     pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
     indexPC = pc.Index(index)
     
@@ -22,7 +22,6 @@ def AlmacenarEmbedding(lista_vectores, api_key, index="mch-dev", namespace="ns1"
             response = indexPC.upsert(vectors=vector_estructurado, namespace=namespace)
             responses.append(response)
         except Exception as e:
-            # Return the error and stop the function
             return f"An error occurred: {str(e)}"
     return responses
  

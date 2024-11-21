@@ -18,7 +18,6 @@ def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwa
         - y_tolerance: int, vertical tolerance for grouping elements (default: 1)
     """
 
-    # Set default values for the extract_text options
     options = {
         "layout": True,
         "line_dir_render": "ttb",
@@ -27,14 +26,12 @@ def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwa
         "y_tolerance": 1,
     }
 
-    # Override defaults with any user-provided kwargs
+  
     options.update(kwargs)
 
-    # Extract text from the PDF file
     with pdfplumber.open(pdf_path) as pdf:
         text = ""
         for page in pdf.pages:
-            # Pass the options to extract_text using **options
             text += page.extract_text(
                 layout=options["layout"],
                 line_dir_render=options["line_dir_render"],
@@ -47,12 +44,10 @@ def extract_text_from_pdf(pdf_path, txt_output_path="txts/{pdf_path}.txt", **kwa
     output_dir = os.path.dirname(txt_output_path) or "."
     os.makedirs(output_dir, exist_ok=True)
 
-    # Save the extracted text to a .txt file
     with open(output_path, "w", encoding="utf-8") as archivo:
         archivo.write(text)
 
     return text
-
 
 if __name__ == "__main__":
     pass

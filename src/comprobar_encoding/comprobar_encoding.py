@@ -16,6 +16,7 @@ def classify_full_text(text):
             return 'spanish'
         else:
             return 'non_latin'
+        
     except LangDetectException as e:
         print(f"Language detection failed: {e}")
         return 'non_latin'  

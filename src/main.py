@@ -42,22 +42,25 @@ def main():
         for chunk in non_latin_chunks:
             corrected_text = generate_prompt(chunk)
             corrected_texts.append(corrected_text)
-            print(f"Corrected non-Latin text: {corrected_text}") 
+            print(f"Corrected non-Latin text: {corrected_text}")
 
     
-"""     all_texts = (english_chunks if language == 'english' else []) + \
+    all_texts = (english_chunks if language == 'english' else []) + \
                 (spanish_chunks if language == 'spanish' else []) + \
                 (corrected_texts if language == 'non_latin' else [])
+
+
     
     embeddings = CrearEmbeddings(all_texts, model="text-embedding-3-small")
+    print(embeddings)
 
     
     pinecone_api_key = os.getenv("PINECONE_API_KEY")
-    storage_responses = AlmacenarEmbedding(embeddings, api_key=pinecone_api_key, index="mch-dev")
+    storage_responses = AlmacenarEmbedding(embeddings, api_key=pinecone_api_key, index="mch-carretillas-chatbot")
     
    
     for i, response in enumerate(storage_responses):
-        print(f"Stored vector {i+1}: {response}") """
+        print(f"Stored vector {i+1}: {response}") 
 
 if __name__ == "__main__":
     main()
